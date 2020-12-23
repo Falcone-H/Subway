@@ -302,10 +302,11 @@ void MainWindow::transferQuery()
     {
         QList<int> stationsList;
         QList<Edge> edgesList;
+        double dis = 0;
         bool flag=true;
         if(way==1)
         {
-            flag=subwayGraph->queryTransferMinTime(s1, s2, stationsList, edgesList);
+            flag=subwayGraph->queryTransferMinTime(s1, s2, stationsList, edgesList, dis);
         }
         else
         {
@@ -318,8 +319,11 @@ void MainWindow::transferQuery()
             scene->clear();
             drawEdges(edgesList);
             drawStations(stationsList);
-            QString text=way==1?("以下线路时间最短，共换乘"+QString::number(stationsList.size()-1)+"个站点\n\n"):
+            QString text=way==1?("以下线路时间最短，共换乘"+QString::number(stationsList.size()-1)+"个站点\n\n"
+                                 + "预估共" + QString::number(dis / 1000) + "公里\n\n"):
                                 ("以下线路换乘最少，共换乘"+QString::number(stationsList.size()-1)+"条线路\n\n");
+
+
             for(int i=0; i<stationsList.size(); ++i)
             {
                 if(i)

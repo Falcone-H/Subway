@@ -330,7 +330,7 @@ void SubwayGraph::getGraph(QList<int>&stationsList, QList<Edge>&edgesList)
 }
 
 //获取最少时间的线路
-bool SubwayGraph::queryTransferMinTime(int s1, int s2, QList<int>&stationsList, QList<Edge>&edgesList)
+bool SubwayGraph::queryTransferMinTime(int s1, int s2, QList<int>&stationsList, QList<Edge>&edgesList, double &dis)
 {
 #define INF 999999999
     stationsList.clear();
@@ -369,6 +369,8 @@ bool SubwayGraph::queryTransferMinTime(int s1, int s2, QList<int>&stationsList, 
             }
         }
     }
+
+    dis = dist[s2];
 
     if(path[s2]==-1)
     {

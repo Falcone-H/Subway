@@ -83,7 +83,8 @@ public:
     //获取最少时间的线路
     bool queryTransferMinTime(int s1, int s2,
                               QList<int>&stationsList,
-                              QList<Edge>&edgesList);
+                              QList<Edge>&edgesList,
+                              double &dis);
     //获取最少换乘的线路
     bool queryTransferMinTransfer(int s1, int s2,
                                   QList<int>&stationsList,
